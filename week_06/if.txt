@@ -1,0 +1,11 @@
+if(a>b){
+        printf("a is greater than b"); 
+	printf("thankyou");
+}
+else if( a==b){
+        printf("a is equal to b");
+}
+else{
+       printf("b is greater than a");
+}
+

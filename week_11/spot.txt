@@ -1,0 +1,4 @@
+int A(int alpha,float b,char c)
+{
+printf(hello world);
+}

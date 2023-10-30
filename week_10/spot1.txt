@@ -1,0 +1,13 @@
+int main()
+{
+switch(i):
+{
+case 1:
+printf(hello world);
+case 2:
+printf(hello world);
+default:
+printf(invalid input);
+}
+return 0;
+}

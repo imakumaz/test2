@@ -1,0 +1,11 @@
+int main()
+{
+switch(i)
+{
+case 1:
+printf(hello world);
+i++;
+}
+return 0;
+}
+

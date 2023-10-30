@@ -1,0 +1,7 @@
+int i = 0;
+do
+{
+Printf(“iteration %d \n”,i);
+i++;
+}While(i<=10);
+
