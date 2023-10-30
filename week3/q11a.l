@@ -1,0 +1,33 @@
+%{                                                                                                                                                                                                                 
+int num=0;                                                                                                                                                                                                         
+%}                                                                                                                                                                                                                 
+%x CM                                                                                                                                                                                                              
+                                                                                                                                                                                                                   
+%%                                                                                                                                                                                                                 
+                                                                                                                                                                                                                   
+"/*" {BEGIN CM ; }       
+                                                                                                                                                                                          
+<CM>. return '\.';                                                                                                                                                                                                 
+<CM>\n
+<CM>["]"*/"["] return '\.';                                                                                                                                                                                                             
+<CM>"*/" {BEGIN INITIAL;}                                                                                                                                                                                          
+                                                                                                                                                                                                                   
+.       {                                                                                                                                                                                                          
+}                                                                                                                                                                                                                  
+                                                                                                                                                                                                                   
+\n    return 0;                                                                                                                                                                                                    
+                                                                                                                                                                                                                   
+%%                                                                                                                                                                                                                 
+                                                                                                                                                                                                                   
+int yywrap(){                                                                                                                                                                                                      
+return 1;                                                                                                                                                                                                          
+}                                                                                                                                                                                                                  
+                                                                                                                                                                                                                   
+int main()                                                                                                                                                                                                         
+{                                                                                                                                                                                                                  
+while(yylex())                                                                                                                                                                                                     
+{                                                                                                                                                                                                                  
+printf("%s",yytext);                                                                                                                                                                                               
+}                                                                                                                                                                                                                  
+return 0;                                                                                                                                                                                                          
+}      
