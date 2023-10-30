@@ -1,0 +1,76 @@
+
+
+Replace a word with another word in a file
+%option noyywrap
+%{
+#include<stdio.h>
+#include<string.h>
+
+char replace_with [] = "hello ";
+char replace [] ="giritharan";
+%}
+
+%%
+[a-zA-Z]+    { if(strcmp(yytext, replace)==0)
+                   fprintf(yyout, "%s", replace_with);
+                else
+                    fprintf(yyout, "%s", yytext);}
+.            fprintf(yyout, "%s", yytext);
+%%
+
+
+
+int main()
+{
+    extern FILE *yyin, *yyout;
+    yyin=fopen("input.txt", "r");
+    yyout=fopen("output.txt", "w");
+    yylex();
+}
+
+
+
+print the total char, whitespace and tabs in a givn input file
+%option noyywrap
+%{
+#include<stdio.h>
+int lc=0,sc=0,tc=0,ch=0,wc=0;
+%}
+%%
+[\n] { lc++; ch+=yyleng;}
+" " { sc++; ch+=yyleng;}
+[\t\n] { tc++; ch+=yyleng;}
+[^\t\n ]+ { wc++;  ch+=yyleng;
+printf("words:%s\n",yytext);}
+%%
+
+int main(){
+    extern FILE *yyin;
+        yyin=fopen("input.txt","r");
+    yylex();
+    printf("Number of lines : %d\n",lc);
+    printf("Number of spaces : %d\n",sc);
+    printf("Number of tabs, words, charc : %d , %d , %d\n",tc,wc,ch);
+
+    return 0;
+}
+
+valid the phone number 
+%option noyywrap
+%{
+#include<stdio.h>
+
+%}
+%%
+"+"[9][1][6-9][0-9]{9}  printf("Phone number valid");
+.+ printf("Phone number Invalid");
+
+%%
+int main()
+{
+        printf("Enter the number:");
+        yylex();
+        return 0;
+}
+
+
